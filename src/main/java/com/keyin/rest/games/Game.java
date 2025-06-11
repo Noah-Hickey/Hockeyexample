@@ -22,6 +22,8 @@ public class Game {
 
     private Calendar gameDate;
 
+    private String location;
+
     // Getters & Setters //
 
     public long getId() {
