@@ -13,11 +13,11 @@ public class Game {
     @GeneratedValue(generator = "game_sequence")
     private long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER) // Suggested by Claude to use EAGER//
     @JoinColumn(name = "home_team_id", nullable = false)
     private Team homeTeam;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER) // Suggested by Claude to use EAGER//
     @JoinColumn(name = "away_team_id", nullable = false)
     private Team awayTeam;
 

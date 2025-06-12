@@ -18,8 +18,9 @@ public class GameController {
         return gameService.getAllGames();
     }
 
-    @PostMapping("/game")
+    @PostMapping("/games")
     public ResponseEntity<?> createGame(@RequestBody Game newGame) {
+
         try {
             Game createdGame = gameService.createGame(newGame);
             return ResponseEntity.ok(createdGame);
@@ -27,5 +28,4 @@ public class GameController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-
 }
