@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 import java.util.Calendar;
 
+@Entity
 public class Game {
 
     @Id
@@ -12,17 +13,29 @@ public class Game {
     @GeneratedValue(generator = "game_sequence")
     private long id;
 
-    @ManyToOne
-    @JoinColumn(name = "home_team_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "home_team_id", nullable = false)
     private Team homeTeam;
 
-    @ManyToOne
-    @JoinColumn(name = "away_team_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "away_team_id", nullable = false)
     private Team awayTeam;
 
     private Calendar gameDate;
 
     private String location;
+
+    // Default constructor
+    public Game() {
+    }
+
+    // Constructor with parameters
+    public Game(Team homeTeam, Team awayTeam, Calendar gameDate, String location) {
+        this.homeTeam = homeTeam;
+        this.awayTeam = awayTeam;
+        this.gameDate = gameDate;
+        this.location = location;
+    }
 
     // Getters & Setters //
 
